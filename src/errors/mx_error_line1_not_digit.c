@@ -1,6 +1,6 @@
 #include "pathfinder.h"
 
-char *mx_line1_not_digit(int *line_count, char *str) {
+char *mx_error_line1_not_digit(int *line_count, char *str) {
     int j = 0;
 
     if (str[0] == '\n') {

@@ -83,6 +83,6 @@ void mx_printerr(const char *s);
 bool mx_isdigit(int c);
 bool mx_isalpha(int c);
 int mx_atoi(const char *str);
-
+int mx_intlen(int n);
 
 #endif

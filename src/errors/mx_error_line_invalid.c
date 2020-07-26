@@ -14,6 +14,7 @@ static void error_output_invalid_line(int *line_count) {
 
 static void error_check_island_dist_exist(int *line_count, char *str) {
     int i;
+    int digit;
 
     for (i = 0; str[i] != '\n'; i++) { //check whether both islands exist
         if (str[i] == '-' && (!mx_isalpha(str[i - 1]) || !mx_isalpha(str[i + 1])))

@@ -10,13 +10,12 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-struct islands_dist {
+typedef struct s_islands {
     char **isl_dist;
     char **unique_isl;
     int digit;
     int count_words;
-} islands;
-
+} t_islands;
 
 //---error_handling_pack---
 void mx_error_handling(int argc, char **argv);

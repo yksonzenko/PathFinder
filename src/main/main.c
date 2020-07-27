@@ -14,5 +14,5 @@
 
 int main(int argc, char *argv[]) {
 	mx_error_handling(argc, argv);
-	system("leaks -q pathfinder");
+	// system("leaks -q pathfinder");
 }

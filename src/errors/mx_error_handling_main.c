@@ -17,5 +17,7 @@ void mx_error_handling(int argc, char **argv) {
     // printf("check\n");
     mx_error_line_invalid(&line_count, str);
     str = head;
-    mx_error_invalid_num_islands(str);
+    t_islands *isl = (t_islands*)malloc(sizeof(t_islands));
+    mx_error_invalid_num_islands(isl, str);
+    mx_error_same_island_in_line(isl, &line_count);
 }

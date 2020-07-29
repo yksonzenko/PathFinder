@@ -1,6 +1,6 @@
 #include "pathfinder.h"
 
-static char *sorted_islands_array(t_islands *isl) {
+static void sorted_islands_array(t_islands *isl) {
     isl->count_unique_isl = 1;
     isl->unique_isl = (char **)malloc(sizeof(char *) * isl->count_words);
     isl->unique_isl[0] = mx_strdup(isl->isl_dist[0]);
@@ -22,7 +22,6 @@ static char *sorted_islands_array(t_islands *isl) {
     }
     // mx_print_strarr(isl->unique_isl, " ");
     // printf("%d\n", isl->count_unique_isl);
-    return *isl->unique_isl;
 }
 
 void mx_error_invalid_num_islands(t_islands *isl, char *str) {
@@ -40,10 +39,12 @@ void mx_error_invalid_num_islands(t_islands *isl, char *str) {
         }
         isl->count_words = mx_count_words(str, ' ');
         isl->isl_dist = mx_strsplit(str, ' ');
-        *isl->unique_isl = sorted_islands_array(isl);
+        sorted_islands_array(isl);
     }
     if (isl->count_unique_isl != isl->digit) {
         mx_printerr("error: invalid number of islands\n");
+        free(str);
         exit(1);
     }
+    mx_del_strarr(&isl->unique_isl);
 }

@@ -1,27 +1,12 @@
 #include "pathfinder.h"
 
-void mx_duplicate_bridges(t_islands *isl, char *argv) {
-    char *str = NULL;
-
-    str = mx_file_to_str(argv);
-    str += mx_intlen(isl->digit);
-    for (int i = 0; str[i] != '\0'; i++) {
-        if (str[i] == ',' || str[i] == '\n' || mx_isdigit(str[i]))
-            str[i] = ' ';
-    }
-    isl->dup_bridge = mx_strsplit(str, ' ');
-    // mx_print_strarr(isl->dup_bridge, "\n"); //---
-    for (int i = 0; isl->dup_bridge[i]; i++) {
-        for (int j = i + 1; isl->dup_bridge[j]; j++) {
-            if (mx_strcmp(isl->dup_bridge[i], isl->dup_bridge[j]) == 0) {
-                mx_printerr("error: duplicate bridges\n");
-                // free(str);
-                exit(1);
+void mx_error_duplicate_bridges(t_islands *isl) {
+    for (int i = 0; i <= isl->count_words - 3; i += 3)
+        for (int j = i + 3; j <= isl->count_words - 3; j += 3)
+            if ((mx_strcmp(isl->isl_dist[i], isl->isl_dist[j]) == 0) &&
+                (mx_strcmp(isl->isl_dist[i + 1], isl->isl_dist[j + 1]) == 0)) {
+                    mx_printerr("error: duplicate bridges\n");
+                    mx_clean_struct(isl);
+                    exit(1);
             }
-        }
-    }
-    mx_print_strarr(isl->dup_bridge, " "); //---
-    mx_del_strarr(&isl->dup_bridge);
-    mx_del_strarr(&isl->isl_dist);
-
 }

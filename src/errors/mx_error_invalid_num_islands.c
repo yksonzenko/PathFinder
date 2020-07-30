@@ -5,23 +5,22 @@ static void sorted_islands_array(t_islands *isl) {
     isl->unique_isl = (char **)malloc(sizeof(char *) * isl->count_words);
     isl->unique_isl[0] = mx_strdup(isl->isl_dist[0]);
     isl->unique_isl[1] = NULL;
-    // mx_print_strarr(isl->isl_dist, " ");
-    for (int i = 1; isl->isl_dist[i]; i++) {
-        if (mx_isdigit(isl->isl_dist[i][0]))
-            continue;
-        for (int j = 0; isl->unique_isl[j]; j++) {
-            if (mx_strcmp(isl->isl_dist[i], isl->unique_isl[j]) == 0)
-                break;
-            if (mx_strcmp(isl->isl_dist[i], isl->unique_isl[j]) != 0 &&
-                isl->unique_isl[j + 1] == NULL) {
-                isl->unique_isl[j + 1] = mx_strdup(isl->isl_dist[i]);
-                isl->unique_isl[j + 2] = NULL;
-                isl->count_unique_isl += 1;
+    if (isl->unique_isl[0]) {
+        for (int i = 1; isl->isl_dist[i]; i++) {
+            if (mx_isdigit(isl->isl_dist[i][0]))
+                continue;
+            for (int j = 0; isl->unique_isl[j]; j++) {
+                if (mx_strcmp(isl->isl_dist[i], isl->unique_isl[j]) == 0)
+                    break;
+                if (mx_strcmp(isl->isl_dist[i], isl->unique_isl[j]) != 0 &&
+                    isl->unique_isl[j + 1] == NULL) {
+                    isl->unique_isl[j + 1] = mx_strdup(isl->isl_dist[i]);
+                    isl->unique_isl[j + 2] = NULL;
+                    isl->count_unique_isl += 1;
+                }
             }
         }
     }
-    // mx_print_strarr(isl->unique_isl, " ");
-    // printf("%d\n", isl->count_unique_isl);
 }
 
 void mx_error_invalid_num_islands(t_islands *isl, char *str) {
@@ -43,8 +42,7 @@ void mx_error_invalid_num_islands(t_islands *isl, char *str) {
     }
     if (isl->count_unique_isl != isl->digit) {
         mx_printerr("error: invalid number of islands\n");
-        free(str);
+        mx_clean_struct(isl);
         exit(1);
     }
-    mx_del_strarr(&isl->unique_isl);
 }

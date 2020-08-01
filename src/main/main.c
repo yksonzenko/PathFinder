@@ -13,6 +13,9 @@
 // }
 
 int main(int argc, char *argv[]) {
-	mx_error_handling(argc, argv);
+	t_islands *isl = (t_islands*)malloc(sizeof(t_islands));
+	mx_error_handling(argc, argv, isl);
+	t_matrix *matrix = (t_matrix*)malloc(sizeof(t_matrix));
+	mx_adjacency_matrix(isl, matrix);
 	// system("leaks -q pathfinder");
 }

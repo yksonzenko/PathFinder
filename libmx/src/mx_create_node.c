@@ -5,6 +5,5 @@ t_list *mx_create_node(void *data) {
 
 	new_node->data = data;
 	new_node->next = NULL;
-
 	return new_node;
 }

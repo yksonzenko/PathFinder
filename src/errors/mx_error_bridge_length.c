@@ -11,5 +11,4 @@ void mx_error_bridge_length(t_islands *isl) {
         mx_clean_struct(isl);
         exit(1);
     }
-
 }

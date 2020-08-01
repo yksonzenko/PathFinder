@@ -9,6 +9,9 @@
 #include <fcntl.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <math.h>
+
+#define INF 2147483648
 
 typedef struct s_islands {
     char **isl_dist;
@@ -19,8 +22,12 @@ typedef struct s_islands {
     long sum_dist;
 } t_islands;
 
+typedef struct s_matrix {
+    int **adj_matrix;
+} t_matrix;
+
 //---error_handling_pack---
-void mx_error_handling(int argc, char **argv);
+void mx_error_handling(int argc, char **argv, t_islands *isl);
 
 void mx_error_invalid_num_args(int argc);
 void mx_error_file_exists(char *argv);
@@ -33,6 +40,7 @@ void mx_error_same_island_in_line(t_islands *isl, int *line_count);
 void mx_error_duplicate_bridges(t_islands *isl);
 void mx_clean_struct(t_islands *isl);
 void mx_error_bridge_length(t_islands *isl);
+void mx_adjacency_matrix(t_islands *isl, t_matrix *matrix);
 
 
 #endif

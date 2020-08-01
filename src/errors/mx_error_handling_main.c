@@ -1,11 +1,10 @@
 #include "pathfinder.h"
 
-void mx_error_handling(int argc, char **argv) {
+void mx_error_handling(int argc, char **argv, t_islands *isl) {
     int line_count = 1;
     char *str = NULL;
     char *head = NULL;
-    t_islands *isl = (t_islands*)malloc(sizeof(t_islands));
-    
+
     mx_error_invalid_num_args(argc);
     mx_error_file_exists(argv[1]);
     mx_error_file_empty(argv[1]);

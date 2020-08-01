@@ -9,4 +9,10 @@ void mx_error_duplicate_bridges(t_islands *isl) {
                     mx_clean_struct(isl);
                     exit(1);
             }
+            else if ((mx_strcmp(isl->isl_dist[i], isl->isl_dist[j + 1]) == 0) &&
+                (mx_strcmp(isl->isl_dist[i + 1], isl->isl_dist[j]) == 0)) {
+                    mx_printerr("error: duplicate bridges\n");
+                    mx_clean_struct(isl);
+                    exit(1);
+            }
 }

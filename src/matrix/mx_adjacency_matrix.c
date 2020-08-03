@@ -1,16 +1,22 @@
 #include "pathfinder.h"
 
+static int get_isl_index(char *island, t_islands *isl) {
+    for (int j = 0; isl->unique_isl[j]; j++)
+        if (mx_strcmp(island, isl->unique_isl[j]) == 0)
+            return j;
+    return 0;
+}
+
 void mx_adjacency_matrix(t_islands *isl, t_matrix *matrix) {
-    matrix->adj_matrix = (int **)malloc(sizeof(int *) * isl->count_unique_isl);
-    for (int h = 0; h < isl->count_unique_isl; h++) {
-        matrix->adj_matrix[h] = (int *)malloc(sizeof(int) *
-        isl->count_unique_isl);
+    mx_filling_matrix(isl, matrix);
+    int row;
+    int col;
+
+    for (int i = 0; isl->isl_dist[i]; i += 3) {
+        row = get_isl_index(isl->isl_dist[i], isl);
+        col = get_isl_index(isl->isl_dist[i + 1], isl);
+        matrix->adj_matrix[row][col] = mx_atoi(isl->isl_dist[i + 2]);
+        matrix->adj_matrix[col][row] = matrix->adj_matrix[row][col];
     }
-    for (int i = 0; i < isl->count_unique_isl; i++) {
-        for (int j = 0; j < isl->count_unique_isl; j++) {
-            matrix->adj_matrix[i][j] = (long)INF;
-            printf("%d ", matrix->adj_matrix[i][j]);
-        }
-    printf("\n");
-    }
+    mx_print_intarr(matrix->adj_matrix, isl->count_unique_isl); //---
 }

@@ -11,8 +11,6 @@
 #include <stddef.h>
 #include <math.h>
 
-#define INF 2147483648
-
 typedef struct s_islands {
     char **isl_dist;
     char **unique_isl;
@@ -40,7 +38,7 @@ void mx_error_same_island_in_line(t_islands *isl, int *line_count);
 void mx_error_duplicate_bridges(t_islands *isl);
 void mx_clean_struct(t_islands *isl);
 void mx_error_bridge_length(t_islands *isl);
+void mx_filling_matrix(t_islands *isl, t_matrix *matrix);
 void mx_adjacency_matrix(t_islands *isl, t_matrix *matrix);
-
 
 #endif

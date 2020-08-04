@@ -17,5 +17,6 @@ int main(int argc, char *argv[]) {
 	mx_error_handling(argc, argv, isl);
 	t_matrix *matrix = (t_matrix*)malloc(sizeof(t_matrix));
 	mx_adjacency_matrix(isl, matrix);
+	mx_floyd_warshal_algorithm(matrix, isl);
 	// system("leaks -q pathfinder");
 }

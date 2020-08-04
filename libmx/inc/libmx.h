@@ -84,6 +84,6 @@ bool mx_isdigit(int c);
 bool mx_isalpha(int c);
 int mx_atoi(const char *str);
 int mx_intlen(int n);
-void mx_print_intarr(int **arr, int len);
+void mx_print_intarr(long **arr, int len);
 
 #endif

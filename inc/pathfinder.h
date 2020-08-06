@@ -50,4 +50,7 @@ void mx_path_matrix(t_matrix *matrix, t_islands *isl);
 //---algorithm---
 void mx_floyd_warshal_algorithm(t_matrix *matrix, t_islands *isl);
 
+//---result output---
+void mx_result_output(t_matrix *matrix, t_islands *isl);
+
 #endif

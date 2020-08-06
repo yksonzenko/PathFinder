@@ -19,7 +19,6 @@ static int get_isl_index(char *island, t_islands *isl) {
 }
 
 void mx_adjacency_matrix(t_islands *isl, t_matrix *matrix) {
-    mx_adj_matrix_initialization(isl, matrix);
     int row;
     int col;
 
@@ -29,4 +28,9 @@ void mx_adjacency_matrix(t_islands *isl, t_matrix *matrix) {
         matrix->adj_matrix[row][col] = mx_atoi(isl->isl_dist[i + 2]);
         matrix->adj_matrix[col][row] = matrix->adj_matrix[row][col];
     }
+//---------------------------------------------
+    write(1, "\n", 1);
+    mx_printstr("--- init paths ---\n");
+    print_intarr(matrix->adj_matrix, isl->count_unique_isl);
+//---------------------------------------------
 }

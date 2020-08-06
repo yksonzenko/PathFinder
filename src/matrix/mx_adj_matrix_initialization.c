@@ -12,17 +12,12 @@ void mx_adj_matrix_initialization(t_islands *isl, t_matrix *matrix) {
             if (i == j)
                 matrix->adj_matrix[i][j] = 0;
 //---------------------------------------------
-            if (matrix->adj_matrix[i][j] == INF)
-            {
-                printf("INF\t");
-            }
-            else
-            {
-                printf("%ld\t", matrix->adj_matrix[i][j]);
-            }
-
+            // if (matrix->adj_matrix[i][j] == INF)
+            //     printf("INF\t");
+            // else
+            //     printf("%ld\t", matrix->adj_matrix[i][j]);
         }
-    printf("\n");
-    }
+    // write(1, "\n", 1);
 //---------------------------------------------
+    }
 }

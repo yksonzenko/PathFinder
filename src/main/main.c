@@ -19,4 +19,5 @@ int main(int argc, char *argv[]) {
 	mx_adjacency_matrix(isl, matrix);
 	mx_floyd_warshal_algorithm(matrix, isl);
 	// system("leaks -q pathfinder");
+	// mx_path_matrix(matrix, isl);
 }

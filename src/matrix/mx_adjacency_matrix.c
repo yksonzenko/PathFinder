@@ -1,5 +1,16 @@
 #include "pathfinder.h"
 
+//---
+static void print_intarr(long **arr, int len) {
+    for (int i = 0; i < len; i++) {
+        for (int j = 0; j < len; j++) {
+            mx_printint(arr[i][j]);
+            write(1, "\t", 1);
+        }
+	write(1, "\n", 1);
+    }
+} //---
+
 static int get_isl_index(char *island, t_islands *isl) {
     for (int j = 0; isl->unique_isl[j]; j++)
         if (mx_strcmp(island, isl->unique_isl[j]) == 0)
@@ -8,7 +19,7 @@ static int get_isl_index(char *island, t_islands *isl) {
 }
 
 void mx_adjacency_matrix(t_islands *isl, t_matrix *matrix) {
-    mx_filling_matrix(isl, matrix);
+    mx_adj_matrix_initialization(isl, matrix);
     int row;
     int col;
 
@@ -18,5 +29,4 @@ void mx_adjacency_matrix(t_islands *isl, t_matrix *matrix) {
         matrix->adj_matrix[row][col] = mx_atoi(isl->isl_dist[i + 2]);
         matrix->adj_matrix[col][row] = matrix->adj_matrix[row][col];
     }
-    mx_print_intarr(matrix->adj_matrix, isl->count_unique_isl); //---
 }

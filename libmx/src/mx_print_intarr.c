@@ -1,6 +1,6 @@
 #include "libmx.h"
 
-void mx_print_intarr(long **arr, int len) {
+void mx_print_intarr(int **arr, int len) {
     for (int i = 0; i < len; i++) {
         for (int j = 0; j < len; j++) {
             mx_printint(arr[i][j]);

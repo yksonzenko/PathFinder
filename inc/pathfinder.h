@@ -24,6 +24,7 @@ typedef struct s_islands {
 
 typedef struct s_matrix {
     long **adj_matrix;
+    int **path_matrix;
 } t_matrix;
 
 //---error_handling_pack---
@@ -42,8 +43,9 @@ void mx_clean_struct(t_islands *isl);
 void mx_error_bridge_length(t_islands *isl);
 
 //---matrix initialization---
-void mx_filling_matrix(t_islands *isl, t_matrix *matrix);
+void mx_adj_matrix_initialization(t_islands *isl, t_matrix *matrix);
 void mx_adjacency_matrix(t_islands *isl, t_matrix *matrix);
+void mx_path_matrix(t_matrix *matrix, t_islands *isl);
 
 //---algorithm---
 void mx_floyd_warshal_algorithm(t_matrix *matrix, t_islands *isl);

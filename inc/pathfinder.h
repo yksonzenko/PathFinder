@@ -25,6 +25,7 @@ typedef struct s_islands {
 typedef struct s_matrix {
     long **adj_matrix;
     int **path_matrix;
+    int *dist_path;
 } t_matrix;
 
 //---error_handling_pack---
@@ -52,5 +53,9 @@ void mx_floyd_warshal_algorithm(t_matrix *matrix, t_islands *isl);
 
 //---result output---
 void mx_result_output(t_matrix *matrix, t_islands *isl);
+void mx_print_direct_route(t_matrix *matrix, t_islands *isl, int row,
+                            int col);
+void mx_print_transit_route(t_matrix *matrix, t_islands *isl, int row,
+                            int col);
 
 #endif

@@ -9,5 +9,5 @@ int main(int argc, char *argv[]) {
 	mx_path_matrix(matrix, isl);
 	mx_floyd_warshal_algorithm(matrix, isl);
 	mx_result_output(matrix, isl);
-	system("leaks -q pathfinder");
+	// system("leaks -q pathfinder");
 }

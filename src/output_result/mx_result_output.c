@@ -17,4 +17,5 @@ void mx_result_output(t_matrix *matrix, t_islands *isl) {
             }
             mx_printstr("========================================\n");
         }
+    }
 }

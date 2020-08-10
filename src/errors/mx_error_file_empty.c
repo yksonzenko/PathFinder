@@ -1,8 +1,5 @@
 #include "pathfinder.h"
 
-/*
- * if the file is empty
- */
 void mx_error_file_empty(char *argv) {
     int file;
     int file_length = 0;

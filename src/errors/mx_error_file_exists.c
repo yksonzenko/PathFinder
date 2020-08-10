@@ -1,6 +1,5 @@
 #include "pathfinder.h"
 
-//if the file does not exist
 void mx_error_file_exists(char *str) {
     int file;
 

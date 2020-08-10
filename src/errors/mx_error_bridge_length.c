@@ -1,6 +1,6 @@
 #include "pathfinder.h"
 
-void mx_error_bridge_length(t_islands *isl) {
+void mx_error_bridge_length(t_islands *isl, t_matrix *matrix) {
     isl->sum_dist = 0;
 
     for (int i = 2; i <= isl->count_words - 1; i += 3) {
@@ -8,7 +8,7 @@ void mx_error_bridge_length(t_islands *isl) {
     }
     if (isl->sum_dist > 2147483647) {
         mx_printerr("error: sum of bridges lengths is too big\n");
-        mx_clean_struct(isl);
+        mx_clean_struct(isl, matrix);
         exit(1);
     }
 }

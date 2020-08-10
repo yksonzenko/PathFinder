@@ -1,21 +1,31 @@
 #include "pathfinder.h"
 
-void mx_result_output(t_matrix *matrix, t_islands *isl) {
-    for (int row = 0; row < isl->count_unique_isl; row++) {
-        for (int col = row + 1; col < isl->count_unique_isl; col++) {
-            mx_printstr("========================================\n");
-            mx_printstr("Path: ");
-            mx_printstr(isl->unique_isl[row]);
-            mx_printstr(" -> ");
-            mx_printstr(isl->unique_isl[col]);
-            mx_printchar('\n');
-            if (col == matrix->path_matrix[row][col])
-                mx_print_direct_route(matrix, isl, row, col);
-            else {
-                mx_printstr("Route: ");
-                mx_print_transit_route(matrix, isl, row, col);
-            }
-            mx_printstr("========================================\n");
-        }
-    }
+static int* mem_int_arr(int count) {
+	int *arr = (int*)malloc(sizeof(int) * count);
+	int j = 0;
+
+	for(; j < count; j++)
+		arr[j] = 0;
+	return arr;
+}
+
+static t_backpath *new_route(t_islands *isl, int start, int finish) {
+	t_backpath *bp = (t_backpath*)malloc(sizeof(t_backpath));
+    int len = isl->count_unique_isl;
+
+	if(bp == NULL)
+		exit(-1);
+	bp->route = mem_int_arr(len);
+	bp->size = 1;
+	bp->count = len;
+	bp->route[0] = finish;
+	bp->route[1] = start;
+	return bp;
+}
+
+void mx_result_output(t_matrix *matrix, t_islands *isl, int i, int j) {
+    t_backpath *bp = new_route(isl, i, j);
+    mx_floyd_backtrack(matrix, isl, bp);
+    free(bp->route);
+    free(bp);
 }

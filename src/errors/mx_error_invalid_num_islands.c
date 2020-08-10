@@ -21,6 +21,7 @@ static void sorted_islands_array(t_islands *isl) {
             }
         }
     }
+    mx_print_strarr(isl->isl_dist, "\t");
 }
 
 void mx_error_invalid_num_islands(t_islands *isl, char *str) {

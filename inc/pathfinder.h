@@ -57,7 +57,6 @@ void mx_print_direct_route(t_matrix *matrix, t_islands *isl, int row,
                             int col);
 void mx_print_transit_route(t_matrix *matrix, t_islands *isl, int row,
                             int col);
-void mx_print_transit_dist(t_matrix *matrix, t_islands *isl, int row,
-                            int col);
+void mx_print_transit_dist(t_matrix *matrix, t_islands *isl, int len);
 
 #endif

@@ -10,6 +10,5 @@ int main(int argc, char *argv[]) {
 	mx_path_matrix(matrix, isl);
 	mx_floyd_warshal_algorithm(matrix, isl);
 	mx_clean_struct(isl, matrix);
-	system("leaks -q pathfinder");
 	return 0;
 }

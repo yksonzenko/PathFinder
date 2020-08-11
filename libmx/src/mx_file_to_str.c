@@ -11,7 +11,7 @@ char *mx_file_to_str(const char *file) {
     	return NULL;
     any_file = open(file, O_RDONLY);
     if (any_file < 0)
-    	return NULL;
+        return NULL;
     while(read(any_file, buffer, 1))
     	file_length++;
     	if (close(any_file) < 0)

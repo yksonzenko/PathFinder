@@ -5,7 +5,7 @@ static void sorted_islands_array(t_islands *isl) {
     isl->unique_isl = (char **)malloc(sizeof(char *) * isl->count_words);
     isl->unique_isl[0] = mx_strdup(isl->isl_dist[0]);
     isl->unique_isl[1] = NULL;
-    
+
     if (isl->unique_isl[0]) {
         for (int i = 1; isl->isl_dist[i]; i++) {
             if (mx_isdigit(isl->isl_dist[i][0]))
@@ -24,8 +24,7 @@ static void sorted_islands_array(t_islands *isl) {
     }
 }
 
-void mx_error_invalid_num_islands(t_islands *isl, t_matrix *matrix,
-                                    char *str) {
+void mx_error_invalid_num_islands(t_islands *isl, char *str) {
     int i;
 
     if (*str != '\0') {
@@ -42,9 +41,10 @@ void mx_error_invalid_num_islands(t_islands *isl, t_matrix *matrix,
         isl->isl_dist = mx_strsplit(str, ' ');
         sorted_islands_array(isl);
     }
+    if (isl->count_unique_isl == 1 && isl->digit == 0)
+        exit(0);
     if (isl->count_unique_isl != isl->digit) {
         mx_printerr("error: invalid number of islands\n");
-        mx_clean_struct(isl, matrix);
         exit(1);
     }
 }

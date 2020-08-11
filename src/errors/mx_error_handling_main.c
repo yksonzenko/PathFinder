@@ -14,10 +14,10 @@ void mx_error_handling(int argc, char **argv, t_islands *isl,
     str = mx_error_line1_not_digit(&line_count, str, isl);
     mx_error_line_invalid(&line_count, str);
     str = head;
-    mx_error_invalid_num_islands(isl, matrix, str);
+    mx_error_invalid_num_islands(isl, str);
     if (str)
         free(str);
     mx_error_same_island_in_line(isl, &line_count);
-    mx_error_duplicate_bridges(isl, matrix);
-    mx_error_bridge_length(isl, matrix);
+    mx_error_duplicate_bridges(isl);
+    mx_error_bridge_length(isl);
 }

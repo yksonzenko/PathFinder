@@ -49,12 +49,14 @@ MKDIR		= mkdir -p
 RM			= /bin/rm -rf
 
 # checking if libs are up to date
-all: $(LIB_LIST) $(NAME)
+all: $(NAME)
 
 # LIB_BIN for libs dependency
-$(NAME): $(LIB_BIN) $(OBJ_DIR) $(OBJ)
+$(NAME): $(LIB_LIST) $(OBJ_DIR) $(OBJ)
 	@$(COMPILE) $(OBJ) -lmx -o $(NAME)
 	@printf "\r\33[2K$@ \033[32;1mcreated\033[0m\n"
+
+$(LIB_BIN): $(LIB_LIST)
 
 # make for all libs
 $(LIB_LIST): $(LIB_DIRS)
@@ -65,9 +67,9 @@ $(OBJ_DIR):
 	@$(MKDIR) $@ $(foreach dir, $(DIRS), $@/$(dir))
 
 # comling obj files
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_H)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_H) $(LIB_BIN)
 	@$(COMPILE) -o $@ -c $<
-	@printf "\r\33[2K$(NAME) \033[33;1mcompile \033[0m$(<:$(SRC_DIR)/%.c=%) "
+	@printf "\r\33[2K$(NAME) \033[33;1mcompile \033[0m$(<:$(SRC_DIR)/%.c=%)"
 
 clean:
 	@$(MAKE_M) $(LIB_DIR)/$(LIB_LIST) $@

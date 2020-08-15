@@ -6,8 +6,8 @@ Pathfinder is a program that searches for the shortest route between two points.
 
 ### Compiling and running program:
 
-```
 use `make` or `make pathfinder`
+```
 ./pathfinder <name of file>
 ```
 

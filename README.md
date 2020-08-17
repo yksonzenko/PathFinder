@@ -4,6 +4,7 @@ Pathfinder is a program that searches for the shortest route between two points.
 
 ![image](https://github.com/yksonzenko/PathFinder/blob/master/pathfinder_results.png)
 
+
 ## Usage:
 
 ### Compiling and running program:
